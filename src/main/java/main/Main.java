@@ -1,29 +1,23 @@
 package main;
 
-import model.Song;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
+
+import main.util.UtilHibernate;
 
 public class Main {
 	public static void main(String[] args) {
 
-		Configuration configuration = new Configuration();
-		configuration.configure("hibernate.cfg.xml");
-		configuration.addAnnotatedClass(Song.class);
+		try (Session session = UtilHibernate.getSessionFactory().openSession()) {
+			// Check MySQL database version
+			String sql = "select version()";
 
-		SessionFactory sessionFactory = configuration.buildSessionFactory();
-		Session session = sessionFactory.openSession();
-
-		Song song = new Song();
-		song.setId(3);
-		song.setSongName("you are not alone");
-		song.setArtist("Michael Jackson");
-
-		session.beginTransaction();
-		session.save(song);
-		session.getTransaction().commit();
-		session.close();
-		System.out.println("Saved ...");
+			String result = (String) session.createNativeQuery(sql).getSingleResult();
+			System.out.println("MySql Database Version is:::");
+			System.out.println(result);
+		} catch (HibernateException e) {
+			e.printStackTrace();
+		}
 	}
+
 }
