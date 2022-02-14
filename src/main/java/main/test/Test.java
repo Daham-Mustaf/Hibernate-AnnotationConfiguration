@@ -4,7 +4,6 @@ import java.util.Date;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 
 import main.utils.UtilHibernate;
 import model.Student;
