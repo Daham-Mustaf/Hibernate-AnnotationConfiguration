@@ -4,6 +4,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 import model.Song;
+import model.Student;
 
 public class UtilHibernate {
 	private static Configuration configuration;
@@ -14,7 +15,7 @@ public class UtilHibernate {
 		if (sessionFactory == null) {
 			configuration = new Configuration();
 			configuration.configure("hibernate.cfg.xml");
-			configuration.addAnnotatedClass(Song.class);
+			configuration.addAnnotatedClass(Student.class);
 			sessionFactory = configuration.buildSessionFactory();
 		}
 		return sessionFactory;
