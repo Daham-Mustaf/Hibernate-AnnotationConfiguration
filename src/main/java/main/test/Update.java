@@ -27,6 +27,10 @@ public class Update {
 
 		} catch (HibernateException e) {
 			e.printStackTrace();
+		} finally {
+			if (session != null) {
+				session.close();
+			}
 		}
 
 	}
