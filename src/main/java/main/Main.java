@@ -13,6 +13,9 @@ public class Main {
 		SessionFactory sessionFactory1 = UtilHibernate.getSessionFactory();
 		SessionFactory sessionFactory2 = UtilHibernate.getSessionFactory();
 		// now we have only one  SessionFactory.
+		if(sessionFactory1 == sessionFactory2) {
+			System.out.println("Tow sessionFactories are equal ");
+		}
 		
 		
 		System.out.println(sessionFactory1 + "  and " + sessionFactory2);
