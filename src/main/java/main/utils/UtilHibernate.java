@@ -10,7 +10,7 @@ public class UtilHibernate {
 	private static SessionFactory sessionFactory = null;
 
 	public static SessionFactory getSessionFactory() {
-
+		// Design a singleton SessionFactory !
 		if (sessionFactory == null) {
 			configuration = new Configuration();
 			configuration.configure("hibernate.cfg.xml");
