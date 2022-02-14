@@ -25,6 +25,7 @@ public class Test {
 			session.beginTransaction();
 
 			// session.persist(student);
+			// save is a Serializable method returns the Id
 			Integer id = (Integer) session.save(student);
 			System.out.println("student is created  with Id::" + id);
 
