@@ -22,19 +22,17 @@ public class Test {
 //		}
 		try (Session session = UtilHibernate.getSessionFactory().openSession()) {
 			Student student = getStudent();
-	    	session.beginTransaction();
-	    	
-	    	//session.persist(employee);
-	    	Integer id =(Integer)session.save(student);
-	    	System.out.println("Employee is created  with Id::"+id);
-	    	
-	    	session.getTransaction().commit();
+			session.beginTransaction();
+
+			// session.persist(student);
+			Integer id = (Integer) session.save(student);
+			System.out.println("student is created  with Id::" + id);
+
+			session.getTransaction().commit();
 
 		} catch (HibernateException e) {
 			e.printStackTrace();
 		}
-
-		getStudent();
 
 	}
 
